@@ -42,7 +42,8 @@ def verify_google_token(token):
         )
 
         # Validar dominio Workspace
-        if idinfo.get("hd") != ALLOWED_DOMAIN:
+        # validar solo gmail.com
+        if idinfo.get("email", "").split("@")[1] != ALLOWED_DOMAIN:
             return None
 
         return idinfo
